@@ -19,6 +19,12 @@ class LoginPage extends Page {
     get btnSubmit () {
         return $('button[type="submit"]');
     }
+    get flashMessage () {
+        return $('#flash-message #flash')
+    }
+    get logoutButton () {
+        return $('.example .button')
+    }
 
     /**
      * a method to encapsule automation code to interact with the page

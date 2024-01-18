@@ -203,8 +203,16 @@ exports.config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+    beforeTest: function () {
+        const chai = require('chai')
+        const chaiWebdriver = require('chai-webdriverio').default
+
+        chai.use(chaiWebdriver(browser))
+
+        global.assert = chai.assert
+        global.expect = chai.expect
+        chai.Should()
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)

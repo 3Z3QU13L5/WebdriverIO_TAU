@@ -4,7 +4,7 @@
   "description": "Test Automation University course on WebdriverIO",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "wdio",
     "wdio": "wdio run ./wdio.conf.js"
   },
   "author": "Miguel Solano",
@@ -15,5 +15,8 @@
     "@wdio/local-runner": "^8.28.0",
     "@wdio/mocha-framework": "^8.28.0",
     "@wdio/spec-reporter": "^8.28.0"
+  },
+  "dependencies": {
+    "chai-webdriverio": "^1.0.0"
   }
 }
