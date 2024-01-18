@@ -31,6 +31,14 @@ class LoginPage extends Page {
     }
 
     /**
+     * Click logout button
+     */
+    async clickLogoutButton() {
+        await this.logoutButton.waitForDisplayed()
+        await this.logoutButton.click()
+    }
+
+    /**
      * overwrite specific options to adapt it to page object
      */
     open () {
