@@ -4,6 +4,8 @@
   "description": "Test Automation University course on WebdriverIO",
   "main": "index.js",
   "scripts": {
+    "test_elementActions": "wdio wdio.conf.js --spec ./test/specs/elementActions.test.js",
+    "test_elements": "wdio wdio.conf.js --spec ./test/specs/element.test.js",
     "test": "wdio",
     "wdio": "wdio run ./wdio.conf.js"
   },

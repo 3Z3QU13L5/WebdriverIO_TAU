@@ -2,17 +2,17 @@ const { expect } = require('@wdio/globals')
 const InternetPage = require('../pageobjects/internet.page');
 
 
-describe('Interacting with elements', function(){
+describe('Interacting with elements', function () {
     it('Get text for element', async () => {
         await InternetPage.open();
         let text = await InternetPage.pageHeader.getText();
         console.log(text)
         InternetPage.getLiText()
         console.log(await InternetPage.getSpecificElementText(7))
-        
+
     })
 
-    it("Is footer Displayed", async () =>{
+    it("Is footer Displayed", async () => {
         console.log(await InternetPage.pageFooter.isDisplayed())
     })
     it("Does the Header exist", async () => {
@@ -29,6 +29,5 @@ describe('Interacting with elements', function(){
     })
     it("Click Element", async () => {
         await InternetPage.clickOnLink()
-        console.log("got here")
     })
 })
