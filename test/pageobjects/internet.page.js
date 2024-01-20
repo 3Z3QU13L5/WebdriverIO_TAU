@@ -11,6 +11,9 @@ class InternetPage extends Page {
     get childElement() { return this.parent.$$('li') }
     specificChldElement(index) { return this.parent.$(`li:nth-child(${index})`) }
     get firstLink() { return $(`ul li:nth-child(1) a`) }
+    checkbox(index) { return $(`#checkboxes input:nth-child(${index})`) }
+
+    hyperLink(index) { return $(`ul li:nth-child(${index}) a`) }
 
     async getLiText() {
         await this.childElement.filter((element) => {
@@ -23,12 +26,15 @@ class InternetPage extends Page {
         return await this.specificChldElement(index).getText()
     }
 
+    async clickElement(element) {
+        await element.click()
+    }
+
     async clickOnLink() {
         if (await this.firstLink.isDisplayed() === true) {
             await this.firstLink.click()
         }
-        await browser.pause(5000)
-
+        await this.h3Header.waitForDisplayed()
     }
 
     open() {
