@@ -9,11 +9,27 @@ class InternetPage extends Page {
     get pageFooter() { return $('#page-footer') }
     get parent() { return $('ul') }
     get childElement() { return this.parent.$$('li') }
-    specificChldElement(index) { return this.parent.$(`li:nth-child(${index})`) }
     get firstLink() { return $(`ul li:nth-child(1) a`) }
-    checkbox(index) { return $(`#checkboxes input:nth-child(${index})`) }
+    get username() { return $(`#username`) }
+    get password() { return $(`#password`) }
+    get targetBar() { return $(`.example #target`) }
+    get resutlKey() { return $(`.example #result`) }
 
+    specificChldElement(index) { return this.parent.$(`li:nth-child(${index})`) }
+    checkbox(index) { return $(`#checkboxes input:nth-child(${index})`) }
     hyperLink(index) { return $(`ul li:nth-child(${index}) a`) }
+    figures(idx) { return $(`.example .figure:nth-child(${idx}) img`) }
+    figuresDetails(idx) { return $(`.example .figure:nth-child(${idx}) .figcaption h5`) }
+
+    async hoverOnFigure(index) {
+        await this.figures(index).waitForDisplayed()
+        await this.figures(index).moveTo(1, 0)
+    }
+
+    async getFigureDetailsText(index) {
+        await this.figuresDetails(index).waitForDisplayed()
+        return await this.figuresDetails(index).getText()
+    }
 
     async getLiText() {
         await this.childElement.filter((element) => {
@@ -37,8 +53,34 @@ class InternetPage extends Page {
         await this.h3Header.waitForDisplayed()
     }
 
-    open() {
-        return super.open('');
+    async enterUsername(text) {
+        await this.username.isDisplayed()
+        await this.username.setValue(text)
+    }
+
+
+    async enterPassword(text) {
+        await this.password.isDisplayed()
+        await this.password.setValue(text)
+    }
+    /**
+     * Send keys to an element
+     * @param {string} text 
+     */
+
+    async keysToTarget(text) {
+        await this.targetBar.waitForDisplayed()
+        await this.targetBar.click()
+        await browser.keys(text)
+    }
+
+    async getResultKey() {
+        await this.resutlKey.waitForDisplayed()
+        return await this.resutlKey.getText()
+    }
+
+    open(path = '') {
+        return super.open(path);
     }
 
 }
