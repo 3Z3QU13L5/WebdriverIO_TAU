@@ -79,6 +79,10 @@ class InternetPage extends Page {
         return await this.resutlKey.getText()
     }
 
+    async scrollToPageFooter() {
+        await this.pageFooter.moveTo()
+    }
+
     open(path = '') {
         return super.open(path);
     }
