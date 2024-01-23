@@ -17,6 +17,10 @@ class InternetPage extends Page {
     get hereLink() { return $(`.example a`) }
     get iframeBody() { return $(`#tinymce`) }
     get iframe() { return $(`.example #mce_0_ifr`) }
+    get columnA() { return $(`#column-a`) }
+    get columnB() { return $(`#column-b`) }
+    get columnAHeader() { return $(`#column-a header`) }
+    get columnBHeader() { return $(`#column-b header`) }
 
     specificChldElement(index) { return this.parent.$(`li:nth-child(${index})`) }
     checkbox(index) { return $(`#checkboxes input:nth-child(${index})`) }
@@ -105,6 +109,14 @@ class InternetPage extends Page {
         await this.iframeBody.clearValue()
         await this.iframeBody.click()
         await browser.keys(text)
+    }
+
+    /**
+     * Drag box A in column a to box B in column b
+     */
+    async dragAtoB() {
+        await this.columnA.waitForDisplayed()
+        await this.columnA.dragAndDrop(await this.columnB)
     }
 
     open(path = '') {
