@@ -14,6 +14,9 @@ class InternetPage extends Page {
     get password() { return $(`#password`) }
     get targetBar() { return $(`.example #target`) }
     get resutlKey() { return $(`.example #result`) }
+    get hereLink() { return $(`.example a`) }
+    get iframeBody() { return $(`#tinymce`) }
+    get iframe() { return $(`.example #mce_0_ifr`) }
 
     specificChldElement(index) { return this.parent.$(`li:nth-child(${index})`) }
     checkbox(index) { return $(`#checkboxes input:nth-child(${index})`) }
@@ -81,6 +84,27 @@ class InternetPage extends Page {
 
     async scrollToPageFooter() {
         await this.pageFooter.moveTo()
+    }
+
+    /**
+     * Click the "click here" Link
+     */
+
+    async clickHereLink() {
+        await this.hereLink.waitForDisplayed()
+        await this.hereLink.click()
+    }
+
+
+    /**
+     * 
+     * @param {string} text 
+     */
+    async sentTextToBody(text) {
+        await this.iframeBody.waitForDisplayed()
+        await this.iframeBody.clearValue()
+        await this.iframeBody.click()
+        await browser.keys(text)
     }
 
     open(path = '') {
