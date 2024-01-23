@@ -1,7 +1,6 @@
 const { expect } = require('@wdio/globals')
 const InternetPage = require('../pageobjects/internet.page');
-const LoginPage = require('../pageobjects/login.page');
-const internetPage = require('../pageobjects/internet.page');
+
 
 describe("Webdriver IO API Actions", async function () {
     it("Should Hover on figure 1", async () => {
