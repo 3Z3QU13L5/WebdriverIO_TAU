@@ -22,7 +22,14 @@ class InternetPage extends Page {
     get columnAHeader() { return $(`#column-a header`) }
     get columnBHeader() { return $(`#column-b header`) }
     get dropdown() { return $(`.example #dropdown`)}
+    get alertResult() {return $(`.example #result`)}
     
+    
+    /**
+     * 1. JS Alert, 2. JS Confirm and 3. JS Prompt 
+     * @param {number} idx 
+     */
+    alertButton(idx) { return $(`.example ul li:nth-child(${idx}) button`)}
     /**
      * The index goes from 1 to 3, 1 being default option, 2 is option 1 and 3 is option 2
      * @param {number} idx 
@@ -134,6 +141,16 @@ class InternetPage extends Page {
     async clickDropdownOption(idx){
         await this.dropdownOption(idx).waitForDisplayed()
         await this.dropdownOption(idx).click()
+    }
+
+    /**
+     * 
+     * @param {number} idx 
+     */
+    async clickJSAlertButton(idx){
+        await this.alertButton(idx).waitForDisplayed()
+        await this.alertButton(idx).click()
+
     }
 
     open(path = '') {
