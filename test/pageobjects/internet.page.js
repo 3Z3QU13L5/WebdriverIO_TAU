@@ -21,7 +21,14 @@ class InternetPage extends Page {
     get columnB() { return $(`#column-b`) }
     get columnAHeader() { return $(`#column-a header`) }
     get columnBHeader() { return $(`#column-b header`) }
-
+    get dropdown() { return $(`.example #dropdown`)}
+    
+    /**
+     * The index goes from 1 to 3, 1 being default option, 2 is option 1 and 3 is option 2
+     * @param {number} idx 
+     * 
+     */
+    dropdownOption(idx) {return $(`.example #dropdown option:nth-child(${idx})`)}
     specificChldElement(index) { return this.parent.$(`li:nth-child(${index})`) }
     checkbox(index) { return $(`#checkboxes input:nth-child(${index})`) }
     hyperLink(index) { return $(`ul li:nth-child(${index}) a`) }
@@ -117,6 +124,16 @@ class InternetPage extends Page {
     async dragAtoB() {
         await this.columnA.waitForDisplayed()
         await this.columnA.dragAndDrop(await this.columnB)
+    }
+
+    async clickDropdown(){
+        await this.dropdown.waitForDisplayed()
+        await this.dropdown.click()
+    }
+
+    async clickDropdownOption(idx){
+        await this.dropdownOption(idx).waitForDisplayed()
+        await this.dropdownOption(idx).click()
     }
 
     open(path = '') {
