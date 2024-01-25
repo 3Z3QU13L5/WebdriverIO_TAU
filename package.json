@@ -4,6 +4,7 @@
   "description": "Test Automation University course on WebdriverIO",
   "main": "index.js",
   "scripts": {
+    "test_enable": "wdio wdio.conf.js --spec ./test/specs/waitForEnable.test.js",
     "test_alerts": "wdio wdio.conf.js --spec ./test/specs/jsAlerts.test.js",
     "test_dropdown": "wdio wdio.conf.js --spec ./test/specs/dropdownMenu.test.js",
     "test_drag-drop": "wdio wdio.conf.js --spec ./test/specs/dragAndDrop.test.js",

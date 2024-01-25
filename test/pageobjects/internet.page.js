@@ -23,7 +23,8 @@ class InternetPage extends Page {
     get columnBHeader() { return $(`#column-b header`) }
     get dropdown() { return $(`.example #dropdown`)}
     get alertResult() {return $(`.example #result`)}
-    
+    get enableDisableButton() { return $(`#input-example button`)}
+    get enableDiableInput() { return $(`#input-example input`)}
     
     /**
      * 1. JS Alert, 2. JS Confirm and 3. JS Prompt 
@@ -151,6 +152,14 @@ class InternetPage extends Page {
         await this.alertButton(idx).waitForDisplayed()
         await this.alertButton(idx).click()
 
+    }
+
+    /**
+     * Togle the Enable/Disable Button
+     */
+    async toggleEnableButton(){
+        await this.enableDisableButton.waitForDisplayed()
+        await this.enableDisableButton.click()
     }
 
     open(path = '') {
