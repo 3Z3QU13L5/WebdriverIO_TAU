@@ -25,7 +25,13 @@ class InternetPage extends Page {
     get alertResult() {return $(`.example #result`)}
     get enableDisableButton() { return $(`#input-example button`)}
     get enableDiableInput() { return $(`#input-example input`)}
+    get addElementButton() { return $(`.example button`)}
     
+    /**
+     * There could be more than one delete button
+     * @param {number} idx 
+     */
+    deleteElement(idx) { return $(`#elements button:nth-child(${idx})`)}
     /**
      * 1. JS Alert, 2. JS Confirm and 3. JS Prompt 
      * @param {number} idx 
@@ -37,9 +43,9 @@ class InternetPage extends Page {
      * 
      */
     dropdownOption(idx) {return $(`.example #dropdown option:nth-child(${idx})`)}
-    specificChldElement(index) { return this.parent.$(`li:nth-child(${index})`) }
-    checkbox(index) { return $(`#checkboxes input:nth-child(${index})`) }
-    hyperLink(index) { return $(`ul li:nth-child(${index}) a`) }
+    specificChldElement(idx) { return this.parent.$(`li:nth-child(${idx})`) }
+    checkbox(idx) { return $(`#checkboxes input:nth-child(${idx})`) }
+    hyperLink(idx) { return $(`ul li:nth-child(${idx}) a`) }
     figures(idx) { return $(`.example .figure:nth-child(${idx}) img`) }
     figuresDetails(idx) { return $(`.example .figure:nth-child(${idx}) .figcaption h5`) }
 
@@ -160,6 +166,22 @@ class InternetPage extends Page {
     async toggleEnableButton(){
         await this.enableDisableButton.waitForDisplayed()
         await this.enableDisableButton.click()
+    }
+
+    /**
+     * Click Add Element Button
+     */
+    async clickAddElement(){
+        await this.addElementButton.waitForDisplayed()
+        await this.addElementButton.click()
+    }
+
+    /**
+     * Click New Delete Element
+     */
+    async clickDeleteElement(idx){
+        await this.deleteElement(idx).waitForDisplayed()
+        await this.deleteElement(idx).click()
     }
 
     open(path = '') {
