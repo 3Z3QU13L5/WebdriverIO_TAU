@@ -26,6 +26,7 @@ class InternetPage extends Page {
     get enableDisableButton() { return $(`#input-example button`)}
     get enableDiableInput() { return $(`#input-example input`)}
     get addElementButton() { return $(`.example button`)}
+    get dynamicButton() { return $(`#checkbox-example button`)}
     
     /**
      * There could be more than one delete button
@@ -182,6 +183,11 @@ class InternetPage extends Page {
     async clickDeleteElement(idx){
         await this.deleteElement(idx).waitForDisplayed()
         await this.deleteElement(idx).click()
+    }
+
+    async toggleDynamicButton(){
+        await this.dynamicButton.waitForDisplayed()
+        await this.dynamicButton.click()
     }
 
     open(path = '') {
