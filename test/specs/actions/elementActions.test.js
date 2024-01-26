@@ -12,7 +12,7 @@ describe("Test element actions", function () {
 
     it("should click element", async () => {
         await InternetPage.clickOnLink()
-        await expect(browser).toHaveUrl('https://the-internet.herokuapp.com/abtest')
+        await expect(browser).toHaveUrl(`${browser.options.baseUrl}abtest`)
     })
 
     it("should get text", async () => {
@@ -21,14 +21,14 @@ describe("Test element actions", function () {
 
     it("should check checkbox", async () => {
         await InternetPage.clickElement(await InternetPage.hyperLink(6))
-        await expect(browser).toHaveUrl('https://the-internet.herokuapp.com/checkboxes')
+        await expect(browser).toHaveUrl(`${browser.options.baseUrl}checkboxes`)
         await InternetPage.clickElement(await InternetPage.checkbox(1))
         await expect(InternetPage.checkbox(1)).toBeSelected()
     })
 
     it("should uncheck checkbox", async () => {
         await InternetPage.clickElement(await InternetPage.hyperLink(6))
-        await expect(browser).toHaveUrl('https://the-internet.herokuapp.com/checkboxes')
+        await expect(browser).toHaveUrl(`${browser.options.baseUrl}checkboxes`)
         await InternetPage.clickElement(await InternetPage.checkbox(3))
         await expect(await (await InternetPage.checkbox(3)).isSelected()).toEqual(false)
     })
