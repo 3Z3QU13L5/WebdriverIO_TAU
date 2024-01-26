@@ -1,6 +1,6 @@
 const { expect } = require('@wdio/globals')
-const InternetPage = require('../pageobjects/internet.page');
-const LoginPage = require('../pageobjects/login.page')
+const InternetPage = require('../../pageobjects/internet.page');
+const LoginPage = require('../../pageobjects/login.page')
 
 describe("Test element actions", function () {
 

@@ -21,29 +21,29 @@ class InternetPage extends Page {
     get columnB() { return $(`#column-b`) }
     get columnAHeader() { return $(`#column-a header`) }
     get columnBHeader() { return $(`#column-b header`) }
-    get dropdown() { return $(`.example #dropdown`)}
-    get alertResult() {return $(`.example #result`)}
-    get enableDisableButton() { return $(`#input-example button`)}
-    get enableDiableInput() { return $(`#input-example input`)}
-    get addElementButton() { return $(`.example button`)}
-    get dynamicButton() { return $(`#checkbox-example button`)}
-    
+    get dropdown() { return $(`.example #dropdown`) }
+    get alertResult() { return $(`.example #result`) }
+    get enableDisableButton() { return $(`#input-example button`) }
+    get enableDiableInput() { return $(`#input-example input`) }
+    get addElementButton() { return $(`.example button`) }
+    get dynamicButton() { return $(`#checkbox-example button`) }
+
     /**
      * There could be more than one delete button
      * @param {number} idx 
      */
-    deleteElement(idx) { return $(`#elements button:nth-child(${idx})`)}
+    deleteElement(idx) { return $(`#elements button:nth-child(${idx})`) }
     /**
      * 1. JS Alert, 2. JS Confirm and 3. JS Prompt 
      * @param {number} idx 
      */
-    alertButton(idx) { return $(`.example ul li:nth-child(${idx}) button`)}
+    alertButton(idx) { return $(`.example ul li:nth-child(${idx}) button`) }
     /**
      * The index goes from 1 to 3, 1 being default option, 2 is option 1 and 3 is option 2
      * @param {number} idx 
      * 
      */
-    dropdownOption(idx) {return $(`.example #dropdown option:nth-child(${idx})`)}
+    dropdownOption(idx) { return $(`.example #dropdown option:nth-child(${idx})`) }
     specificChldElement(idx) { return this.parent.$(`li:nth-child(${idx})`) }
     checkbox(idx) { return $(`#checkboxes input:nth-child(${idx})`) }
     hyperLink(idx) { return $(`ul li:nth-child(${idx}) a`) }
@@ -141,12 +141,12 @@ class InternetPage extends Page {
         await this.columnA.dragAndDrop(await this.columnB)
     }
 
-    async clickDropdown(){
+    async clickDropdown() {
         await this.dropdown.waitForDisplayed()
         await this.dropdown.click()
     }
 
-    async clickDropdownOption(idx){
+    async clickDropdownOption(idx) {
         await this.dropdownOption(idx).waitForDisplayed()
         await this.dropdownOption(idx).click()
     }
@@ -155,7 +155,7 @@ class InternetPage extends Page {
      * 
      * @param {number} idx 
      */
-    async clickJSAlertButton(idx){
+    async clickJSAlertButton(idx) {
         await this.alertButton(idx).waitForDisplayed()
         await this.alertButton(idx).click()
 
@@ -164,7 +164,7 @@ class InternetPage extends Page {
     /**
      * Togle the Enable/Disable Button
      */
-    async toggleEnableButton(){
+    async toggleEnableButton() {
         await this.enableDisableButton.waitForDisplayed()
         await this.enableDisableButton.click()
     }
@@ -172,7 +172,7 @@ class InternetPage extends Page {
     /**
      * Click Add Element Button
      */
-    async clickAddElement(){
+    async clickAddElement() {
         await this.addElementButton.waitForDisplayed()
         await this.addElementButton.click()
     }
@@ -180,12 +180,15 @@ class InternetPage extends Page {
     /**
      * Click New Delete Element
      */
-    async clickDeleteElement(idx){
+    async clickDeleteElement(idx) {
         await this.deleteElement(idx).waitForDisplayed()
         await this.deleteElement(idx).click()
     }
 
-    async toggleDynamicButton(){
+    /**
+     * Toggle the button in the dynamic element
+     */
+    async toggleDynamicButton() {
         await this.dynamicButton.waitForDisplayed()
         await this.dynamicButton.click()
     }

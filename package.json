@@ -14,7 +14,7 @@
     "test_switch": "wdio wdio.conf.js --spec ./test/specs/switchWindow.test.js",
     "test_scroll": "wdio wdio.conf.js --spec ./test/specs/scrollTo.test.js",
     "test_apiActions": "wdio wdio.conf.js --spec ./test/specs/wdioApiActions.test.js",
-    "test_elementActions": "wdio wdio.conf.js --spec ./test/specs/elementActions.test.js",
+    "actions": "wdio --suite actions",
     "test_elements": "wdio wdio.conf.js --spec ./test/specs/element.test.js",
     "test": "wdio",
     "wdio": "wdio run ./wdio.conf.js"
