@@ -1,6 +1,8 @@
 const { expect } = require('@wdio/globals')
 const InternetPage = require('../../pageobjects/internet.page');
-const LoginPage = require('../../pageobjects/login.page')
+const LoginPage = require('../../pageobjects/login.page');
+const logindata = require('../../../data/logindata');
+
 
 describe("Test element actions", function () {
 
@@ -33,20 +35,20 @@ describe("Test element actions", function () {
 
     it("should enter username", async () => {
         await LoginPage.open()
-        await InternetPage.enterUsername('John Doe')
-        await expect(await InternetPage.username.getValue()).toEqual('John Doe')
+        await InternetPage.enterUsername(logindata.userName)
+        await expect(await InternetPage.username.getValue()).toEqual(logindata.userName)
     })
 
     it("should enter password", async () => {
         await LoginPage.open()
-        await InternetPage.enterPassword('Pa55w0rd')
-        await expect(await InternetPage.password.getValue()).toEqual('Pa55w0rd')
+        await InternetPage.enterPassword(logindata.Password)
+        await expect(await InternetPage.password.getValue()).toEqual(logindata.Password)
     })
 
     it("should clear Value", async () => {
         await LoginPage.open()
-        await InternetPage.enterUsername('John Doe')
-        await expect(await InternetPage.username.getValue()).toEqual('John Doe')
+        await InternetPage.enterUsername(logindata.userName)
+        await expect(await InternetPage.username.getValue()).toEqual(logindata.userName)
         await InternetPage.username.click()
         await InternetPage.username.clearValue()
         expect(await InternetPage.username.getValue()).toEqual('')
